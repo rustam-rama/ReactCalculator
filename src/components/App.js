@@ -48,4 +48,4 @@ export const App = () => {
         React.createElement(DateComponent, null) 
     );
 };
-// This is a test comment
+// This is a test comment.
