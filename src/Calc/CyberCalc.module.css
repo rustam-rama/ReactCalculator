@@ -1,0 +1,184 @@
+.container {
+  position: fixed;
+  inset: 0;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #0A192F, #112A5C, #0A192F);
+}
+
+.calculator {
+  position: relative;
+  width: 320px;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #0A192F;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.decorativeLine {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.2), transparent);
+  animation: pulse 2s infinite;
+}
+
+.display {
+  position: relative;
+  height: 4rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(145deg, #2d0723, #1a0412);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: inset 0 0 25px rgba(147, 0, 255, 0.3),
+              0 0 20px rgba(255, 215, 0, 0.2);
+  overflow: hidden;
+}
+
+.displayText {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  font-family: monospace;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.displayResult {
+  background: linear-gradient(145deg, #3d0934, #2d0723);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    inset 0 0 25px rgba(61, 9, 52, 0.6),
+    0 0 30px rgba(45, 7, 35, 0.5),
+    0 0 50px rgba(61, 9, 52, 0.3);
+  animation: angryShake 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.displayResult::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(61, 9, 52, 0.8) 0%,
+    rgba(45, 7, 35, 0.6) 45%,
+    rgba(73, 11, 62, 0.3) 80%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+.displayResult::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70%;
+  background: linear-gradient(
+    to top,
+    rgba(61, 9, 52, 0.4),
+    rgba(45, 7, 35, 0.3),
+    transparent
+  );
+  filter: blur(2px);
+  opacity: 0.5;
+}
+
+.displayResult .displayText {
+  color: #ffd7eb;  /* Мягкий розовато-белый цвет */
+  font-weight: 700;  /* Немного уменьшили жирность */
+  letter-spacing: 0.2em;
+  text-shadow: 
+    0 0 2px rgba(255, 215, 235, 0.7),
+    0 0 4px rgba(255, 215, 235, 0.5),
+    0 0 8px rgba(61, 9, 52, 0.6),
+    0 0 12px rgba(45, 7, 35, 0.6),
+    1px 1px 2px rgba(0, 0, 0, 0.8);  /* Уменьшили интенсивность теней */
+  z-index: 2;
+  opacity: 0.9;  /* Добавили небольшую прозрачность */
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.button {
+  position: relative;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.operatorButton {
+  composes: button;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.equalsButton {
+  composes: button;
+  background-color: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  color: #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.clearButton {
+  composes: button;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+@keyframes angryShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

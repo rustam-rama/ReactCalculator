@@ -7,18 +7,36 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+
+# System files
+.DS_Store
 *.local
 
-# Editor directories and files
+# IDE and editor folders
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
+
+# Windows-specific files
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+
+# VS Code settings
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+
+# Mac OS system files
+.DS_Store
+
+# Other unnecessary files
 *.sw?
+
